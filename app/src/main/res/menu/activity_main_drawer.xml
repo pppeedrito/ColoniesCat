@@ -7,13 +7,13 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="Casa de la caritat" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/pl_angels"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Plaça dels Angels" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Esgl. Sant Llàtzer" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"

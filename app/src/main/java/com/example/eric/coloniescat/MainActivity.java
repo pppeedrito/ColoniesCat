@@ -16,12 +16,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FragmentCasaCaritat.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentCasaCaritat.OnFragmentInteractionListener, FragmentPlacaAngels.OnFragmentInteractionListener, OnMapReadyCallback {
+
+    //crear suport map fragment per poder crear el FragmentMap
+
+   // SupportMapFragment sM;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+     //   sM=SupportMapFragment.newInstance();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -42,7 +48,17 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+      //  sM=getMapAsync(this);
     }
+
+    /*private SupportMapFragment getMapAsync(MainActivity mainActivity) {
+
+
+
+    }*/
+
+
 
     @Override
     public void onBackPressed() {
@@ -95,7 +111,10 @@ public class MainActivity extends AppCompatActivity
 
             fragment = new FragmentCasaCaritat();
             FragmentTransaction = true;
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.pl_angels) {
+
+            fragment = new FragmentPlacaAngels();
+            FragmentTransaction = true;
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -136,3 +155,19 @@ public class MainActivity extends AppCompatActivity
 
     }
 }
+
+
+/*
+* public void onMapReady(GoogleMap googleMap){
+* lim[0] = afegirMarcadorMapa("Lat i Long", googleMap)
+*
+* }
+*
+* private Marker afegirmarcador(double lat, double long, googleMap mMap){
+*
+* LatLong coordenades = new Latlng
+*
+*
+* }
+*
+* */
