@@ -15,19 +15,39 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentCasaCaritat.OnFragmentInteractionListener, FragmentPlacaAngels.OnFragmentInteractionListener, OnMapReadyCallback {
 
     //crear suport map fragment per poder crear el FragmentMap
 
-   // SupportMapFragment sM;
+     SupportMapFragment sM;
+   // private GoogleMap mMap;
 
+    private Marker marcador;
+    double latitut = 0;
+    double longitud =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-     //   sM=SupportMapFragment.newInstance();
+
+        sM=SupportMapFragment.newInstance();
+
+
+      //  setContentView(R.layout.activity_main);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -49,8 +69,11 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-      //  sM=getMapAsync(this);
+
+        sM.getMapAsync(this);
     }
+
+
 
     /*private SupportMapFragment getMapAsync(MainActivity mainActivity) {
 
@@ -105,7 +128,11 @@ public class MainActivity extends AppCompatActivity
 
         boolean FragmentTransaction = false;
         Fragment fragment = null;
+        android.support.v4.app.FragmentManager fM= getSupportFragmentManager();
 
+
+
+        if(sM.isAdded())  fM.beginTransaction().hide(sM).commit();
         if (id == R.id.Casa_de_La_Caritat) {
             // Carragarem el Fragmet aquí, fragment Estàtic
 
@@ -116,13 +143,21 @@ public class MainActivity extends AppCompatActivity
             fragment = new FragmentPlacaAngels();
             FragmentTransaction = true;
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_map) {
+
+            if(!sM.isAdded()){
+                fM.beginTransaction().add(R.id.map, sM).commit();
+            }else{
+                fM.beginTransaction().show(sM).commit();
+            }
+
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+       // }// else if (id == R.id.nav_share) {
+
+       // } //else if (id == R.id.nav_send) {
 
         }
 
@@ -149,6 +184,31 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    private Marker afegirMarcadorMapa(double lat, double lng, String text, GoogleMap mMap){
+        LatLng coordenades = new LatLng(lat, lng);
+
+        marcador = mMap.addMarker(new MarkerOptions()
+                .position(coordenades)
+                .title(text)
+                .icon(BitmapDescriptorFactory.fromResource((R.mipmap.ic_launcher))));
+
+        return (marcador);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap){
+        Marker[] llM=new Marker[5];
+        llM[0]= afegirMarcadorMapa(40.7,-74.00,"A1",googleMap);
+        llM[1]= afegirMarcadorMapa(40.70001,-74.02,"A2",googleMap);
+        llM[2]= afegirMarcadorMapa(40.70001,-74.02,"A3",googleMap);
+        llM[3]= afegirMarcadorMapa(40.70001,-74.025,"A4",googleMap);
+        llM[4]= afegirMarcadorMapa(40.70001,-74.030,"A5",googleMap);
+        llM[4].setDraggable(true);
+
+        CameraUpdate mevaUbicacio = CameraUpdateFactory.newLatLngZoom(new LatLng(llM[0].getPosition().latitude,llM[0].getPosition().longitude), 15);
+        googleMap.animateCamera(mevaUbicacio);
+
+    }
     //mètode implementat per el Fragment per poder fer la comunicacio amb Fragments
     @Override
     public void onFragmentInteraction(Uri uri) {

@@ -13,8 +13,17 @@
     tools:context="com.example.eric.coloniescat.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/map">
+
+    </FrameLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        />
+
+
 </RelativeLayout>
