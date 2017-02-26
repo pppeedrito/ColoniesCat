@@ -11,16 +11,37 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Plaça dels Angels" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/esglesia_llatzer"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Esgl. Sant Llàtzer" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/Casa_de_Convalescencia"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Casa de Convalescència" />
+        <item
+            android:id="@+id/teatra_raval"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Teatre del raval"
+
+            />
+
+        <item
+            android:id="@+id/ajuntament"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Ajuntament del barri"
+
+            />
+        <item
+            android:id="@+id/edifici_modern"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Edifici del modernisme"
+
+            />
+
+
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Mapa">
         <menu>
             <item
                 android:id="@+id/nav_map"

@@ -26,7 +26,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FragmentCasaCaritat.OnFragmentInteractionListener, FragmentPlacaAngels.OnFragmentInteractionListener, OnMapReadyCallback {
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentCasaCaritat.OnFragmentInteractionListener,
+        FragmentPlacaAngels.OnFragmentInteractionListener, OnMapReadyCallback, FragmentEsglesiaLlatzer.OnFragmentInteractionListener, FragmentEdificiModern.OnFragmentInteractionListener,
+        FragmentCasaConv.OnFragmentInteractionListener, FragmentAjuntament.OnFragmentInteractionListener, FragmentTeatra.OnFragmentInteractionListener{
 
     //crear suport map fragment per poder crear el FragmentMap
 
@@ -51,12 +53,19 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Fragment fragment = null;
+      final  android.support.v4.app.FragmentManager fM= getSupportFragmentManager();
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if(!sM.isAdded()){
+                    fM.beginTransaction().add(R.id.map, sM).commit();
+                }else{
+                    fM.beginTransaction().show(sM).commit();
+                }
+
             }
         });
 
@@ -68,6 +77,15 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
+
+        if(!sM.isAdded()){
+            fM.beginTransaction().add(R.id.map, sM).commit();
+        }else{
+            fM.beginTransaction().show(sM).commit();
+        }
 
 
         sM.getMapAsync(this);
@@ -152,13 +170,26 @@ public class MainActivity extends AppCompatActivity
             }
 
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.esglesia_llatzer) {
+            fragment = new FragmentEsglesiaLlatzer();
+            FragmentTransaction = true;
 
+        } else if (id == R.id.Casa_de_Convalescencia) {
 
-       // }// else if (id == R.id.nav_share) {
+            fragment = new FragmentCasaConv();
+            FragmentTransaction = true;
 
-       // } //else if (id == R.id.nav_send) {
+        } else if (id == R.id.teatra_raval) {
+            fragment = new FragmentTeatra();
+            FragmentTransaction = true;
 
+        }else if (id== R.id.ajuntament){
+            fragment = new FragmentAjuntament();
+            FragmentTransaction = true;
+
+        }else if (id ==R.id.edifici_modern){
+            fragment = new FragmentEdificiModern();
+            FragmentTransaction = true;
         }
 
 
