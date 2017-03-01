@@ -199,8 +199,10 @@ public class MainActivity extends AppCompatActivity
         *
         *
         * */
+
+        //.remove per mirar si el fragment es borra un cop passem a un altre fragment
         if(FragmentTransaction){
-            getSupportFragmentManager().beginTransaction()
+            getSupportFragmentManager().beginTransaction().remove(fragment)
                     .replace(R.id.content_main, fragment)
                     .commit();
 
@@ -221,20 +223,24 @@ public class MainActivity extends AppCompatActivity
         marcador = mMap.addMarker(new MarkerOptions()
                 .position(coordenades)
                 .title(text)
-                .icon(BitmapDescriptorFactory.fromResource((R.mipmap.ic_launcher))));
+                .icon(BitmapDescriptorFactory.fromResource((R.mipmap.marcadomapa))));
 
         return (marcador);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap){
-        Marker[] llM=new Marker[5];
-        llM[0]= afegirMarcadorMapa(40.7,-74.00,"A1",googleMap);
-        llM[1]= afegirMarcadorMapa(40.70001,-74.02,"A2",googleMap);
-        llM[2]= afegirMarcadorMapa(40.70001,-74.02,"A3",googleMap);
-        llM[3]= afegirMarcadorMapa(40.70001,-74.025,"A4",googleMap);
-        llM[4]= afegirMarcadorMapa(40.70001,-74.030,"A5",googleMap);
-        llM[4].setDraggable(true);
+
+
+        Marker[] llM = new Marker[7];
+        llM[0] = afegirMarcadorMapa(41.3837963, 2.1667484, "Grafitti, Casa de la Caritat", googleMap);
+        llM[1] = afegirMarcadorMapa(41.3827189, 2.1652982, "Convent Dels Angels", googleMap);
+        llM[2] = afegirMarcadorMapa(41.3796194,2.1641434 , "Esglèsia de Sant Llàtzer", googleMap);
+        llM[3] = afegirMarcadorMapa(41.4132187,2.1734126,   "Casa de Convalescència", googleMap);
+        llM[4] = afegirMarcadorMapa(41.3793014,2.1628403, "Teatre del Raval", googleMap);
+        llM[5] = afegirMarcadorMapa(41.3822713,2.1753178, "Ajuntament del barri ", googleMap);
+        llM[6] = afegirMarcadorMapa(41.3866286,2.1692277, "Edificis del Modernisme", googleMap);
+        llM[6].setDraggable(true);
 
         CameraUpdate mevaUbicacio = CameraUpdateFactory.newLatLngZoom(new LatLng(llM[0].getPosition().latitude,llM[0].getPosition().longitude), 15);
         googleMap.animateCamera(mevaUbicacio);
