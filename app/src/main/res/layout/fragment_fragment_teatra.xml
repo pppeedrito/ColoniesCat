@@ -13,6 +13,7 @@
 
         <TextView
             android:text="Quina obra s ’ hi representa actualment?"
+            android:textSize="28sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
@@ -28,6 +29,17 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="63dp"
             android:id="@+id/btnAcceptTeatre" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:layout_above="@+id/btnAcceptTeatre"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/etTeatre"
+            android:hint="Resposta" />
+
     </RelativeLayout>
 
     <ImageView

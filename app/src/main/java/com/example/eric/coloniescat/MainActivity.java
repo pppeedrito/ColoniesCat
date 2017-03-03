@@ -24,6 +24,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.vision.Frame;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentCasaCaritat.OnFragmentInteractionListener,
@@ -151,6 +152,7 @@ public class MainActivity extends AppCompatActivity
 
 
         if(sM.isAdded())  fM.beginTransaction().hide(sM).commit();
+
         if (id == R.id.Casa_de_La_Caritat) {
             // Carragarem el Fragmet aquí, fragment Estàtic
 
@@ -163,11 +165,22 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_map) {
 
+
+            /*if(!sM.isAdded()){
+                fM.beginTransaction().add(R.id.map, sM).commit();
+            }else{
+               // fM.getView().setVisibility(View.INVISIBLE);
+               ///this.getSupportFragmentManager().beginTransaction().hide(sM).commit();
+             //   getActivity().getWindow().findViewById(CONTENT_VIEW_ID);
+
+                getFragmentManager().beginTransaction().detach(fragment).commit();
+            }*/
             if(!sM.isAdded()){
                 fM.beginTransaction().add(R.id.map, sM).commit();
             }else{
                 fM.beginTransaction().show(sM).commit();
             }
+
 
 
         } else if (id == R.id.esglesia_llatzer) {
@@ -202,7 +215,7 @@ public class MainActivity extends AppCompatActivity
 
         //.remove per mirar si el fragment es borra un cop passem a un altre fragment
         if(FragmentTransaction){
-            getSupportFragmentManager().beginTransaction().remove(fragment)
+            getSupportFragmentManager().beginTransaction()
                     .replace(R.id.content_main, fragment)
                     .commit();
 

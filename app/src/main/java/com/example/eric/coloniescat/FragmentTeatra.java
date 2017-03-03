@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 /**
@@ -58,13 +61,36 @@ public class FragmentTeatra extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        //Button btnAceptar = (Button) findViewById(R.id.btnAcceptTeatre);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //butó per el fragment
+
+       View v = inflater.inflate(R.layout.fragment_fragment_teatra, container, false);
+        Button btnAceptar = (Button) v.findViewById(R.id.btnAcceptTeatre);
+        final EditText etTeater = (EditText) v.findViewById(R.id.etTeatre);
+
+
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               if(etTeater.equals("")) {
+                   Toast.makeText(getActivity(), "Has de respondre alguna cosa :)",
+                           Toast.LENGTH_LONG).show();
+               }
+            }
+        });
+
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_teatra, container, false);
+        return v;
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
