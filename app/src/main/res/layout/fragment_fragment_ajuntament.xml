@@ -5,9 +5,46 @@
     tools:context="com.example.eric.coloniescat.FragmentAjuntament">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="A més a més del Raval quins altres b arris  comprèn el districte de Ciutat Vella?"
+            android:textSize="22sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:layout_marginBottom="174dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:text="Completar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="63dp"
+            android:id="@+id/btnAcceptAjuntament" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:layout_above="@+id/btnAcceptTeatre"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/etAjuntament"
+            android:hint="Resposta" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="261dp"
+        android:src="@drawable/ajuntament"
+        android:id="@+id/imageView2" />
+
 
 </FrameLayout>

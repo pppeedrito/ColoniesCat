@@ -5,9 +5,54 @@
     tools:context="com.example.eric.coloniescat.FragmentEdificiModern">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <Button
+            android:text="Completar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="19dp"
+            android:id="@+id/btnAcceptEdifici"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="128dp"
+            android:layout_marginStart="128dp" />
+
+        <TextView
+            android:text="Quines característiques t’han fet pensar que es tracta d’un edifici d’aquest estil?"
+            android:textSize="28sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:layout_marginBottom="40dp"
+            android:layout_above="@+id/etEdifici"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/etEdifici"
+            android:hint="Resposta"
+            android:layout_above="@+id/btnAcceptEdifici"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="65dp"
+            android:layout_marginEnd="65dp"
+            android:layout_marginBottom="19dp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="261dp"
+        android:src="@drawable/edifici"
+        android:id="@+id/imageView2" />
+
 
 </FrameLayout>

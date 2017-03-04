@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,15 +73,22 @@ public class FragmentTeatra extends Fragment {
 
        View v = inflater.inflate(R.layout.fragment_fragment_teatra, container, false);
         Button btnAceptar = (Button) v.findViewById(R.id.btnAcceptTeatre);
-        final EditText etTeater = (EditText) v.findViewById(R.id.etTeatre);
+        final EditText editText = (EditText) v.findViewById(R.id.etTeatre);
 
+        final String resposta = editText.getText().toString();
 
+        //Mostrarà missatge en l'edit text. No ser perque no arriba al Else
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if(etTeater.equals("")) {
-                   Toast.makeText(getActivity(), "Has de respondre alguna cosa :)",
+               if(TextUtils.isEmpty(resposta)) {
+                   //aqui aniria incorrecte
+                   editText.setError("Correcte ");
+                   return;
+               }else {
+                   Toast.makeText(getActivity(), "Correcte :)",
                            Toast.LENGTH_LONG).show();
+                   return;
                }
             }
         });
